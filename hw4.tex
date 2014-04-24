@@ -20,7 +20,7 @@
 \maketitle
 \begin{enumerate}
 \item To begin a TCP connection, the client sends a SYN message to the server. The server acknowledges with a SYN-ACK, which is received by the client, who then responds with an ACK. This is known as the three-way handshake. To create a SYN flood, the attacking client sends SYN packets but never responds to the SYN-ACK. The server will wait for the ACK, using some resources to maintain state. With enough SYN messages, the server runs out of resources -- in particular, it must maintain the state of each connection in the SYN queue. Once this queue is filled by the half-open connections to the attacker, the server cannot serve new (legitimate) requests.
-\item
+\item TCP sequence numbers are chosen arbitrarily by the server. This allows us to encode some information, if we want. A SYN cookie encodes the state of the connection, which otherwise would have been stored in the SYN queue. This removes the need for the queue, and so a SYN flood attack cannot use up server resources.
 \item \text{}
   \begin{center}
     \includegraphics[width=3.5in]{green-traffic.png}
